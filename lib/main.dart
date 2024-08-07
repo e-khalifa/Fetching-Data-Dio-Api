@@ -1,3 +1,4 @@
+import 'package:fetching_data_dio_api/utils/color_utility.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
@@ -12,9 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Fetching Posts',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: ColorUtility.main,
+        scaffoldBackgroundColor: ColorUtility.background,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: ColorUtility.main,
+          foregroundColor: Colors.white,
+        ),
         useMaterial3: true,
       ),
       home: const HomePage(),

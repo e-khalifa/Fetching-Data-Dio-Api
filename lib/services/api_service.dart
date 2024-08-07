@@ -13,16 +13,6 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> fetchPost(int id) async {
-    try {
-      final response =
-          await dio.get('https://jsonplaceholder.typicode.com/posts/$id');
-      return response.data;
-    } catch (e) {
-      throw ('Failed to load post');
-    }
-  }
-
   Future<List<dynamic>> fetchComments() async {
     try {
       final response =
@@ -48,17 +38,17 @@ class ApiService {
     final users = await fetchUsers();
     final comments = await fetchComments();
 
-    // Create a map of userId to user for quick lookup
+    // Create a map of userId to user
     final userMap = {for (var user in users) user['id']: user['name']};
 
-    // Create a map of postId to comments for quick lookup
+    // Create a map of postId to comments
     final commentsMap = <int, List<dynamic>>{};
     for (var comment in comments) {
       commentsMap[comment['postId']] = commentsMap[comment['postId']] ?? [];
       commentsMap[comment['postId']]!.add(comment);
     }
 
-    // Combine posts with their respective user info and comments
+    // Combine posts with their user name and comments
     return posts.map((post) {
       return {
         ...post,
