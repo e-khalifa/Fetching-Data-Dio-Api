@@ -3,5 +3,5 @@ Using Dio Package to fetch data from Api
 
 ## 📸 Demo
 <div>
-<img src="https://github.com/e-khalifa/Fetching-Data-Dio-Api/blob/main/assets/screenshots/demo.mp4">
+<img src="https://github.com/e-khalifa/Fetching-Data-Dio-Api/blob/main/assets/screenshots/demo.gif">
 <div>
