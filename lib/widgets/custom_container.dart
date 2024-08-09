@@ -11,7 +11,7 @@ class CustomContainer extends StatelessWidget {
 
   const CustomContainer(
       {required this.containerColor,
-      required this.child,
+      this.child,
       this.height,
       this.margin,
       super.key});

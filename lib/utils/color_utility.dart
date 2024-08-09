@@ -8,5 +8,7 @@ class ColorUtility {
   static const mediumPurple = Color.fromARGB(255, 114, 54, 151);
   static const deepPurple = Color.fromARGB(185, 144, 66, 190);
   static const background = Color.fromARGB(255, 250, 250, 250);
-  static const mediumGrey = Color.fromARGB(255, 83, 83, 83);
+  static const softGrey = Color.fromARGB(255, 252, 251, 251);
+  static const mediumGrey = Color.fromARGB(255, 228, 227, 227);
+  static const grey = Color.fromARGB(255, 83, 83, 83);
 }

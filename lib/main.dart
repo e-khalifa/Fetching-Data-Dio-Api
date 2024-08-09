@@ -1,10 +1,21 @@
-import 'package:fetching_data_dio_api/utils/color_utility.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
+import 'services/api_service.dart';
+import 'utils/color_utility.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        FutureProvider<List<Map>>(
+          create: (context) => ApiService().fetchPostsUsersAndComments(),
+          initialData: const [],
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

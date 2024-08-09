@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class TextUtility {
   static Text title(
     String text, {
-    Color color = ColorUtility.mediumGrey,
+    Color color = ColorUtility.grey,
     double size = 22,
     FontWeight weight = FontWeight.w800,
     TextAlign textAlign = TextAlign.center,
@@ -43,7 +43,7 @@ class TextUtility {
 
   static Text body(
     String text, {
-    Color color = ColorUtility.mediumGrey,
+    Color color = ColorUtility.grey,
     double size = 14,
   }) {
     return Text(

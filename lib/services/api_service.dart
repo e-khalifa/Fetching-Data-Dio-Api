@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
-class ApiService {
+class ApiService with ChangeNotifier {
   final dio = Dio();
 
   Future<List<dynamic>> fetchPosts() async {
