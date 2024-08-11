@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
-class ApiService with ChangeNotifier {
+class ApiService {
   final dio = Dio();
 
   Future<List<dynamic>> fetchPosts() async {
@@ -57,5 +56,14 @@ class ApiService with ChangeNotifier {
         'comments': commentsMap[post['id']] ?? [],
       };
     }).toList();
+  }
+
+  Future<void> deletePost(int postId) async {
+    try {
+      await dio.delete('https://jsonplaceholder.typicode.com/posts/$postId');
+      print('deleted on SERVER');
+    } catch (e) {
+      throw ('Failed to delete post');
+    }
   }
 }

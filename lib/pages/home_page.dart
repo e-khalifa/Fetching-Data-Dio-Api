@@ -1,3 +1,4 @@
+import 'package:fetching_data_dio_api/provider/posts_provider.dart';
 import 'package:fetching_data_dio_api/utils/color_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,8 +11,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final posts = context.watch<List<Map>>();
-
+    final postsProvider = context.watch<PostsProvider>();
+    final posts = postsProvider.posts ?? [];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Posts'),
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
             crossAxisCount: 3,
             crossAxisSpacing: 5,
             mainAxisSpacing: 5,
-            childAspectRatio: 0.77,
+            childAspectRatio: 0.75,
           ),
           itemCount: posts.isEmpty ? 12 : posts.length,
           itemBuilder: (context, index) {
@@ -47,6 +48,9 @@ class HomePage extends StatelessWidget {
                     builder: (context) => PostPage(postId: post['id']),
                   ),
                 );
+              },
+              onDelete: () async {
+                await postsProvider.deletePost(post['id']);
               },
             );
           },

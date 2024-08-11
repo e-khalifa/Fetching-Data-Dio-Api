@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../provider/posts_provider.dart';
+
 class PostPage extends StatelessWidget {
   final int postId;
 
@@ -12,11 +14,11 @@ class PostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final posts = context.watch<List<Map>>();
+    final postsProvider = context.watch<PostsProvider>();
+    final posts = postsProvider.posts ?? [];
     final post = posts.firstWhere(
       (post) => post['id'] == postId,
     );
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Details'),

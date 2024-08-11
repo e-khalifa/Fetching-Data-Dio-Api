@@ -1,18 +1,13 @@
+import 'package:fetching_data_dio_api/provider/posts_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
-import 'services/api_service.dart';
 import 'utils/color_utility.dart';
 
 void main() {
   runApp(
-    MultiProvider(
-      providers: [
-        FutureProvider<List<Map>>(
-          create: (context) => ApiService().fetchPostsUsersAndComments(),
-          initialData: const [],
-        ),
-      ],
+    ChangeNotifierProvider(
+      create: (context) => PostsProvider()..loadPosts(),
       child: const MyApp(),
     ),
   );

@@ -7,11 +7,13 @@ class PostCard extends StatelessWidget {
   final String postTitle;
   final String userName;
   final void Function()? onTap;
+  final void Function()? onDelete;
 
   const PostCard(
       {required this.postTitle,
       required this.userName,
       required this.onTap,
+      required this.onDelete,
       super.key});
 
   String getInitials(String name) {
@@ -20,24 +22,34 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        color: ColorUtility.secondary,
-        surfaceTintColor: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              CustomContainer(
-                height: 145,
+    return Card(
+      color: ColorUtility.secondary,
+      surfaceTintColor: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: onTap,
+              child: CustomContainer(
+                height: 140,
                 containerColor: ColorUtility.softPurple,
                 child: Center(child: TextUtility.subtitle(postTitle)),
               ),
-              const SizedBox(height: 5),
-              TextUtility.basic('Written By: ${getInitials(userName)}'),
-            ],
-          ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    onPressed: onDelete,
+                    icon: const Icon(
+                      Icons.delete,
+                      size: 18,
+                    )),
+                TextUtility.basic('By: ${getInitials(userName)}'),
+              ],
+            ),
+          ],
         ),
       ),
     );
